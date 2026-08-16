@@ -317,6 +317,7 @@ function renderGame() {
   ui.confirm.classList.toggle('is-hidden', !isPlayerTurn());
   const isAiTurn = state.phase === 'ai-thinking' || state.phase === 'ai-placement' || state.phase === 'ai-reveal';
   ui.turnTitle.textContent = isAiTurn ? `${difficulty.label}'s turn` : 'Your turn';
+  ui.game.classList.toggle('is-ai-turn', isAiTurn);
   ui.aiStatus.textContent = state.phase === 'ai-thinking' ? 'Thinking…' : state.phase === 'ai-placement' ? 'Placement chosen' : state.phase === 'ai-reveal' ? 'Turn complete' : 'Waiting for you';
   ui.aiStatus.classList.toggle('is-thinking', state.phase === 'ai-thinking' || state.phase === 'ai-placement');
   setCard(state.activeCard, state.phase === 'player' || state.phase === 'ai-thinking' || state.phase === 'ai-placement');
@@ -380,11 +381,11 @@ async function beginAiTurn() {
         const response = await backend.action({ action: 'ai_place', gameId: state.id, actionId: actionId() });
         applyRemoteGame(response.game);
         renderGame();
-        window.setTimeout(resolveAiTurn, 1100);
+        window.setTimeout(resolveAiTurn, 1700);
       } catch (error) {
         showGameError(error.message);
       }
-    }, 700);
+    }, 1000);
     return;
   }
   state.phase = 'ai-thinking';
@@ -393,7 +394,7 @@ async function beginAiTurn() {
   state.lastResult = null;
   saveCheckpoint();
   renderGame();
-  window.setTimeout(showAiPlacement, 900);
+  window.setTimeout(showAiPlacement, 1400);
 }
 
 function showAiPlacement() {
@@ -402,7 +403,7 @@ function showAiPlacement() {
   state.phase = 'ai-placement';
   saveCheckpoint();
   renderGame();
-  window.setTimeout(resolveAiTurn, 1100);
+  window.setTimeout(resolveAiTurn, 1700);
 }
 
 async function resolveAiTurn() {

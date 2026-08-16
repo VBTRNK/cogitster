@@ -86,7 +86,13 @@ select { padding: .48rem 2rem .48rem .7rem; color: var(--paper); border: 1px sol
 .score-chip--player { border-color: rgba(113, 222, 214, .6); }
 .score-chip--ai { border-color: rgba(255, 157, 98, .6); }
 .game-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(17rem, .85fr); gap: 1.25rem; align-items: start; }
-.timeline-panel, .draw-panel, .ai-panel { padding: clamp(1.1rem, 3vw, 1.7rem); border: 1px solid var(--line); border-radius: 1rem; background: rgba(28, 41, 64, .72); box-shadow: var(--shadow); }
+.timeline-panel, .draw-panel, .ai-panel { padding: clamp(1.1rem, 3vw, 1.7rem); border: 1px solid var(--line); border-radius: 1rem; background: rgba(28, 41, 64, .72); box-shadow: var(--shadow); transition: opacity .35s ease, filter .35s ease, border-color .35s ease, background .35s ease, box-shadow .35s ease; }
+#turn-title { transition: color .35s ease; }
+.game.is-ai-turn #turn-title { color: var(--orange); }
+.game.is-ai-turn .timeline-panel { opacity: .55; filter: saturate(.65); }
+.game.is-ai-turn .draw-panel { border-color: rgba(255, 157, 98, .45); }
+.game.is-ai-turn .ai-panel { border-color: rgba(255, 157, 98, .6); background: rgba(255, 157, 98, .08); animation: ai-turn-glow 1.8s ease-in-out infinite alternate; }
+@keyframes ai-turn-glow { from { box-shadow: 0 0 0 1px rgba(255, 157, 98, .2), var(--shadow); } to { box-shadow: 0 0 0 4px rgba(255, 157, 98, .4), var(--shadow); } }
 .section-heading { display: flex; justify-content: space-between; gap: 1rem; align-items: start; }
 .section-heading--compact { align-items: center; }
 .count-badge, .ai-status { flex: 0 0 auto; padding: .35rem .55rem; color: var(--mist); border: 1px solid var(--line); border-radius: 99px; font-size: .7rem; font-weight: 750; }
@@ -127,9 +133,10 @@ select { padding: .48rem 2rem .48rem .7rem; color: var(--paper); border: 1px sol
 .mini-card { display: grid; flex: 0 0 7.7rem; padding: .65rem; border-left: 3px solid var(--orange); border-radius: .3rem; background: rgba(16, 23, 38, .48); }
 .mini-card strong { font-size: .77rem; line-height: 1.15; }
 .mini-card span { align-self: end; margin-top: .35rem; color: var(--mist); font-family: Georgia, serif; font-size: .9rem; }
-.mini-card--choice { border: 2px dashed var(--cyan); background: rgba(113, 222, 214, .13); box-shadow: 0 0 0 3px rgba(113, 222, 214, .08); }
-.mini-card--choice::before { color: var(--cyan); content: '↓ proposed placement'; font-size: .58rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
-.mini-card--choice span { color: var(--cyan); font-family: inherit; font-size: .68rem; font-weight: 750; }
+.mini-card--choice { border: 2px dashed var(--orange); background: rgba(255, 157, 98, .16); box-shadow: 0 0 0 3px rgba(255, 157, 98, .1); animation: choice-in .4s ease; }
+.mini-card--choice::before { color: var(--orange); content: '↓ proposed placement'; font-size: .58rem; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+.mini-card--choice span { color: var(--orange); font-family: inherit; font-size: .68rem; font-weight: 750; }
+@keyframes choice-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 .ai-status { color: var(--orange); border-color: rgba(255, 157, 98, .5); }
 .ai-status.is-thinking { animation: pulse 1s ease-in-out infinite alternate; }
 @keyframes pulse { to { opacity: .45; } }
