@@ -1,0 +1,16 @@
+title = "Cogitster gitleaks config"
+
+[extend]
+useDefault = true
+
+# Supabase's publishable key (config.js) is deliberately public — the
+# browser-safe counterpart to the old anon key, never the service_role key.
+# High entropy makes it look like a generic API key to the default ruleset,
+# so allowlist the prefix specifically rather than the whole file or rule,
+# so an actual secret landing in config.js still gets caught.
+[allowlist]
+description = "Values intentionally shipped to the browser — not secrets"
+regexTarget = "secret"
+regexes = [
+  '''sb_publishable_[A-Za-z0-9_-]+''',
+]
