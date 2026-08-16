@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Cogitster — put philosophy in chronological order."
+    />
+    <title>Cogitster — Philosophy, in order</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="site-header">
+        <a class="back-link" href="https://vibetrunk.com">← VibeTrunk</a>
+        <div class="header-actions">
+          <a class="brand" href="./" aria-label="Cogitster home">
+            <span class="brand-mark" aria-hidden="true">C</span>
+            <span>Cogitster</span>
+          </a>
+          <button class="auth-button is-hidden" id="auth-button" type="button">Sign in to save</button>
+          <button class="text-button" id="how-to-button" type="button">How to play</button>
+        </div>
+      </header>
+
+      <section id="welcome-screen" class="welcome" aria-labelledby="welcome-title">
+        <p class="eyebrow">A philosophy timeline game</p>
+        <h1 id="welcome-title">Place ideas in <em>time.</em></h1>
+        <p class="lede">
+          Build your timeline from quotes, thinkers, books, concepts, and events.
+          Get the year right, and outthink the AI.
+        </p>
+
+        <div class="start-panel">
+          <div class="setting-group">
+            <span class="setting-label">Choose your opponent</span>
+            <div class="choice-row" role="radiogroup" aria-label="AI difficulty">
+              <button class="choice is-selected" data-difficulty="curious" type="button" role="radio" aria-checked="true">
+                <strong>Curious</strong><small>Friendly start</small>
+              </button>
+              <button class="choice" data-difficulty="scholar" type="button" role="radio" aria-checked="false">
+                <strong>Scholar</strong><small>Fair challenge</small>
+              </button>
+              <button class="choice" data-difficulty="oracle" type="button" role="radio" aria-checked="false">
+                <strong>Oracle</strong><small>Strong opponent</small>
+              </button>
+            </div>
+          </div>
+          <div class="setting-group setting-group--inline">
+            <label class="setting-label" for="rounds-select">Rounds</label>
+            <select id="rounds-select">
+              <option value="5">5 rounds</option>
+              <option value="10" selected>10 rounds</option>
+              <option value="15">15 rounds</option>
+            </select>
+          </div>
+          <button id="start-button" class="primary-button" type="button">Start a solo game <span aria-hidden="true">→</span></button>
+          <button id="resume-button" class="text-button is-hidden" type="button">Resume saved game</button>
+          <p class="tiny-note">Progress is saved in this browser for this prototype.</p>
+        </div>
+
+        <aside class="progress-card" aria-label="Your saved progress">
+          <span class="eyebrow">Your library</span>
+          <strong id="games-played">0</strong>
+          <span>games played</span>
+          <span class="progress-divider" aria-hidden="true"></span>
+          <strong id="cards-seen">0</strong>
+          <span>cards discovered</span>
+        </aside>
+      </section>
+
+      <section id="game-screen" class="game is-hidden" aria-live="polite">
+        <div class="game-topline">
+          <div>
+            <p class="eyebrow" id="round-label">Round 1 of 10</p>
+            <h1 id="turn-title">Your turn</h1>
+          </div>
+          <div class="scoreboard" aria-label="Current score">
+            <div class="score-chip score-chip--player"><span>You</span><strong id="player-score">0</strong></div>
+            <div class="score-chip score-chip--ai"><span id="ai-name">Curious</span><strong id="ai-score">0</strong></div>
+          </div>
+        </div>
+
+        <div class="game-grid">
+          <section class="timeline-panel" aria-labelledby="timeline-title">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Your timeline</p>
+                <h2 id="timeline-title">Where does it belong?</h2>
+              </div>
+              <span id="timeline-count" class="count-badge">1 card</span>
+            </div>
+            <p id="timeline-help" class="muted">Choose a position, then lock your answer.</p>
+            <div id="timeline" class="timeline" aria-describedby="timeline-help"></div>
+            <button id="confirm-button" class="primary-button confirm-button" type="button" disabled>Lock in placement <span aria-hidden="true">→</span></button>
+          </section>
+
+          <section class="draw-panel" aria-labelledby="card-heading">
+            <p class="eyebrow">Drawn card</p>
+            <article id="draw-card" class="draw-card draw-card--hidden">
+              <div class="card-topline"><span id="card-type" class="type-tag">Quote</span><span class="card-index" id="card-index">01</span></div>
+              <div class="card-content">
+                <p id="card-prompt" class="card-prompt">“The unexamined life is not worth living.”</p>
+                <p id="card-cue" class="card-cue">Place this thought on your timeline.</p>
+              </div>
+              <div class="card-footer"><span>Cogitster</span><span aria-hidden="true">✦</span></div>
+            </article>
+            <div id="result-panel" class="result-panel is-hidden" role="status"></div>
+          </section>
+        </div>
+
+        <section id="ai-panel" class="ai-panel" aria-labelledby="ai-timeline-title">
+          <div class="section-heading section-heading--compact">
+            <div>
+              <p class="eyebrow"><span id="ai-name-secondary">Curious</span>'s timeline</p>
+              <h2 id="ai-timeline-title">One idea at a time</h2>
+            </div>
+            <span id="ai-status" class="ai-status">Waiting for you</span>
+          </div>
+          <div id="ai-timeline" class="mini-timeline"></div>
+        </section>
+      </section>
+
+      <section id="finish-screen" class="finish is-hidden" aria-labelledby="finish-title">
+        <p class="eyebrow">Timeline complete</p>
+        <h1 id="finish-title">A close call.</h1>
+        <p id="finish-summary" class="lede"></p>
+        <div class="final-scores">
+          <div><span>You</span><strong id="final-player-score">0</strong></div>
+          <div><span id="final-ai-name">Scholar</span><strong id="final-ai-score">0</strong></div>
+        </div>
+        <div class="finish-actions">
+          <button id="play-again-button" class="primary-button" type="button">Play again <span aria-hidden="true">→</span></button>
+          <button id="back-home-button" class="text-button" type="button">Change settings</button>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="how-to-dialog" class="how-to-dialog" aria-labelledby="how-to-title">
+      <button id="close-how-to" class="dialog-close" type="button" aria-label="Close how to play">×</button>
+      <p class="eyebrow">The short version</p>
+      <h2 id="how-to-title">Build the history of ideas.</h2>
+      <ol>
+        <li>Read the card, but not its year.</li>
+        <li>Choose where it belongs in your revealed timeline.</li>
+        <li>Reveal the answer. A correct placement earns one point.</li>
+      </ol>
+      <p>The AI follows the same rules. Its skill is simulated, not generated by a language model.</p>
+    </dialog>
+
+    <dialog id="auth-dialog" class="how-to-dialog" aria-labelledby="auth-title">
+      <button id="close-auth" class="dialog-close" type="button" aria-label="Close sign in">×</button>
+      <p class="eyebrow">Save your timeline</p>
+      <h2 id="auth-title">Continue with email.</h2>
+      <p>We’ll email you a secure sign-in link. Your active solo game will be available on any device.</p>
+      <form id="auth-form" class="auth-form">
+        <label for="email-input">Email address</label>
+        <input id="email-input" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+        <button class="primary-button" type="submit">Email me a sign-in link <span aria-hidden="true">→</span></button>
+      </form>
+      <p id="auth-message" class="tiny-note" role="status"></p>
+      <div class="auth-guest">
+        <span>Prefer to stay local?</span>
+        <button id="guest-play-button" class="text-button" type="button">Play without an account</button>
+      </div>
+    </dialog>
+
+    <script src="config.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

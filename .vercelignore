@@ -1,0 +1,7 @@
+node_modules
+supabase-cogitster-backup
+.env
+.env.*
+!.env.example
+README.md
+HANDOFF.md

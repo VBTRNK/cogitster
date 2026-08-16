@@ -1,0 +1,16 @@
+{
+  "name": "cogitster",
+  "version": "1.0.0",
+  "description": "A dependency-free, browser-playable Cogitster MVP. Open `index.html` in a modern browser, or serve this directory with any static file server.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "supabase": "^2.114.0"
+  }
+}
