@@ -24,7 +24,7 @@ thinker, book, concept, and event cards in order by year. Version 1 supports:
 | 1. Content prototype | Reviewed 20-card starter set | Every card has a specific year, source, basis, and rights/translation review. |
 | 2. Solo vertical slice | Complete 10-round solo game | Player can place cards, receive validated reveals, play against all AI levels, and save/resume progress. |
 | 3. Multiplayer | Private sequential-turn rooms | 2–6 guests can create, join, reconnect, and finish a synchronized game. |
-| 4. Content and polish | Launch deck and accessible UI | 180–250 reviewed cards, responsive/keyboard/screen-reader support, visual identity, and error states. |
+| 4. Content and polish | Launch deck and accessible UI | 300 reviewed cards, responsive/keyboard/screen-reader support, visual identity, and error states. |
 | 5. Hardening and launch | Production-ready release | Security, performance, recovery, and acceptance tests pass; domain and landing-page entry are ready. |
 
 ## Phase 0 — foundation
@@ -110,7 +110,7 @@ and timelines, with no hidden card leaked through API or Realtime messages.
 
 ## Phase 4 — launch content, design, and accessibility
 
-1. Expand to 180–250 reviewed cards, balancing card types, periods, regions,
+1. Expand to 300 reviewed cards, balancing card types, periods, regions,
    traditions, genders, and fields of philosophy.
 2. Create Cogitster’s original name treatment, card system, and responsive
    interface; avoid visual or textual imitation of the game that inspired the

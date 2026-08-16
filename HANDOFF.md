@@ -6,8 +6,9 @@ domain. Supabase production Auth should now use that domain as its canonical URL
 
 ## What works now
 
-- 100-card solo philosophy timeline game with quote, thinker, book, concept,
-  and event cards.
+- 300-card solo philosophy timeline game with quote, thinker, book, concept,
+  and event cards (`cards.js` is the source, imported into the live
+  database).
 - Deterministic Curious, Scholar, and Oracle AI opponents.
 - AI placement appears in its timeline before its result is revealed.
 - Passwordless email login through Supabase Auth.
@@ -30,7 +31,9 @@ domain. Supabase production Auth should now use that domain as its canonical URL
 - **Custom domain:** `cogitster.vibetrunk.com` is attached, verified, and live
   on Vercel.
 - **Migration applied:** `202608160001_cogitster_solo.sql`
-- **Card catalogue:** 100 `published` records imported successfully.
+- **Card catalogue:** 300 `published` records imported successfully
+  (2026-08-16 expansion from the initial 100, via `scripts/import-cards.mjs`,
+  which upserts by id and is safe to re-run after future `cards.js` edits).
 - **Data API:** the `cogitster` schema is exposed in Project Settings → Data
   API. Direct browser table access is still blocked by grants/RLS; only the
   Edge Function exposes the game state required by a player.
@@ -79,7 +82,7 @@ that bootstrap and was dropped when this repo was split out — see
 | `index.html`, `styles.css`, `app.js` | Game UI and local fallback. |
 | `backend.js` | Browser Auth/session handling and calls to `solo-game`. |
 | `config.js` | Browser-safe project URL and publishable key. |
-| `cards.js` | 100-card source catalogue. |
+| `cards.js` | 300-card source catalogue. |
 | `supabase/migrations/202608160001_cogitster_solo.sql` | Schema, RLS, profiles, persistent games. |
 | `supabase/functions/solo-game/index.ts` | Server-authoritative solo game API. |
 | `scripts/import-cards.mjs` | Service-role-only card importer. |
@@ -95,5 +98,8 @@ that bootstrap and was dropped when this repo was split out — see
    timers, reconnect tokens, and no hidden-card leakage.
 4. Replace the current direct `config.js` setup with build-time Vercel public
    environment variables once a bundler/build step is adopted.
-5. Expand and editorially verify the deck toward the 180–250-card release
-   target, including source links and translation-rights review.
+5. `cards.js` has reached the 300-card release target and is imported live
+   (2026-08-16). It still needs a formal editorial/source review pass per
+   the Phase 1 workflow — the new cards' dates and quotes were checked
+   against secondary sources during expansion but not yet formally
+   reviewed.
