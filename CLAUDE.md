@@ -53,19 +53,12 @@ decisions; add an equivalent decisions log here if architectural choices
 start accumulating).
 
 ## Agent safety
-Destructive shell commands (force-push, hard reset, recursive delete, etc.)
-are blocked by a PreToolUse hook regardless of what an agent decides — see
-`AGENTS.md` for the Codex-specific summary, and `.claude/settings.json` /
-`.codex/rules/project.rules` for the exact allow/deny lists. This scaffold
-was copied from `VibeTrunk/home`, which is the canonical template for every
+Standard VibeTrunk scaffold (see global CLAUDE.md's agent safety policy) —
+PreToolUse hooks block destructive commands and young (<14-day) npm
+packages; see `AGENTS.md` and `.claude/settings.json` /
+`.codex/rules/project.rules` for exact allow/deny lists. This scaffold was
+copied from `VibeTrunk/home`, which is the canonical template for every
 VibeTrunk-org repo.
-
-A second PreToolUse hook (`block-young-packages.cjs`, mirrored in
-`.claude/hooks/` and `.codex/hooks/`) blocks `npm install`/`npm i` of any
-package version published less than 14 days ago, checked live against the
-npm registry — a cool-off against supply-chain attacks (typosquats,
-compromised maintainer accounts). It fails open if the registry is
-unreachable or the version can't be resolved unambiguously.
 
 Live-mutating Supabase CLI commands (`supabase db push` for real,
 `supabase db reset`, `supabase secrets set`) are intentionally **not**
