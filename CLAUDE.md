@@ -74,3 +74,9 @@ every VibeTrunk tool sharing this Supabase project, so each use should get a
 deliberate look rather than running unattended. Read-only/dry-run commands
 (`supabase migration list`, `supabase db push --dry-run`,
 `supabase functions deploy`) are allowed.
+
+## Branch protection
+Branch protection on `main` was enabled 2026-08-23 (PRs required, direct
+pushes blocked including for admins, squash-only merges with
+auto-delete-on-merge). See the global `~/.claude/CLAUDE.md`'s "Branch
+workflow" section for the actual branching/PR conventions this enforces.
