@@ -27,9 +27,11 @@ contains the first production backend slice:
 - [`scripts/import-cards.mjs`](scripts/import-cards.mjs) upserts the 100-card
   starter deck into the catalogue as `published` cards.
 
-When the shared Supabase project is available, create the standalone Cogitster
-repository, copy `.env.example` to a non-committed local environment file, and
-then run these commands from that repository:
+The one-time bootstrap on 2026-08-16 ran these commands. They are history
+now: hosted migrations go only through
+[`VibeTrunk/supabase`](https://github.com/VibeTrunk/supabase), and every
+`db push`, `secrets set` or `functions deploy` against the shared project
+needs the owner's yes for that run (see `AGENTS.md`).
 
 ```sh
 supabase link --project-ref <shared-project-ref>
@@ -62,7 +64,9 @@ key in `config.js`. Run a local static server (for example,
 `python -m http.server 4321`) and visit `http://localhost:4321`, which must be
 listed in Supabase Auth's redirect URLs for magic-link sign-in to work.
 
-After any change under `supabase/functions`, redeploy it with:
+After any change under `supabase/functions`, redeploy it with the command
+below. It ships code to the shared hosted project, so it is an external
+deployment: run it only with the owner's yes for that deploy.
 
 ```sh
 npx supabase functions deploy solo-game

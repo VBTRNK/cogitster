@@ -51,13 +51,15 @@ Open `http://localhost:4321`. Supabase Auth must allow
 `http://localhost:4321/**` as a redirect URL. The Supabase CLI is installed as
 a dev dependency; run it through `npx supabase` from this folder.
 
-Useful commands:
+Useful read-only commands:
 
 ```powershell
 npx supabase migration list
-npx supabase functions deploy solo-game
 npx supabase db push --dry-run
 ```
+
+`npx supabase functions deploy solo-game` is an external deployment to the
+shared project: run it only with the owner's yes for that deploy.
 
 The first `supabase init` had to be bootstrapped around an existing migration
 folder; a temporary `supabase-cogitster-backup/` safety copy existed during
