@@ -16,6 +16,6 @@ opening a public issue.
 The `service_role` Supabase key must never be `PUBLIC_`-prefixed, never
 ships to the browser, and never appears in any tracked file — only
 `config.js`'s browser-safe publishable key does. See
-[VibeTrunk/home](https://github.com/VibeTrunk/home)'s `docs/decisions.md`
+[VBTRNK/home](https://github.com/VBTRNK/home)'s `docs/decisions.md`
 for the reasoning behind the shared agent-safety and CI scaffolding this
 repo copies.
