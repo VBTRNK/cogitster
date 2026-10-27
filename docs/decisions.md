@@ -1,7 +1,7 @@
 # Decisions — Cogitster
 
 Short records of rules and why: context, decision, consequences, about 20
-lines each. Newest last. Earlier choices are recorded in `VibeTrunk/home`'s
+lines each. Newest last. Earlier choices are recorded in `VBTRNK/home`'s
 `docs/decisions.md` ("Cogitster split into its own repo") and in
 `docs/build-plan.md`.
 
@@ -10,7 +10,7 @@ lines each. Newest last. Earlier choices are recorded in `VibeTrunk/home`'s
 Date: 2026-10-17
 
 Brought in line with the refreshed `vibetrunk-new-tool` templates
-([VibeTrunk/kut#329](https://github.com/VibeTrunk/kut/issues/329)).
+([VBTRNK/kut#329](https://github.com/VBTRNK/kut/issues/329)).
 
 - `AGENTS.md` is canonical and `CLAUDE.md` imports it. The stale status text
   is gone; `README.md` and `HANDOFF.md` hold the current state.
@@ -28,4 +28,4 @@ Brought in line with the refreshed `vibetrunk-new-tool` templates
 - The 14-day package-age hook is replaced by a Dependabot 5-day cooldown;
   security updates are exempt and manual installs are reviewed in the PR
   diff. gitleaks is pinned by image digest and is the required `scan` check.
-- Hosted migrations go through `VibeTrunk/supabase`, never from this repo.
+- Hosted migrations go through `VBTRNK/supabase`, never from this repo.

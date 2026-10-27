@@ -7,7 +7,7 @@ Canonical instructions for every agent (Codex and Claude) in this repo.
 
 Cogitster is a philosophy timeline game: players put quotes, thinkers, books,
 concepts and events in chronological order. It is a tool in the
-[VibeTrunk](https://vibetrunk.com) hub; add no coupling to `VibeTrunk/home`
+[VibeTrunk](https://vibetrunk.com) hub; add no coupling to `VBTRNK/home`
 beyond its tools-list entry and the shared Supabase project. Product intent is
 in `docs/spec.md` and `docs/build-plan.md`; the current state is in
 `README.md` and `HANDOFF.md`.
@@ -72,7 +72,7 @@ Never run `vercel deploy` or `vercel --prod` by hand unless asked.
 ## Database
 
 - Hosted migrations are catalogued in
-  [`VibeTrunk/supabase`](https://github.com/VibeTrunk/supabase), the only
+  [`VBTRNK/supabase`](https://github.com/VBTRNK/supabase), the only
   deployment authority for the shared project. Its automated
   `apply-migrations` route is KUT-only today, so a Cogitster migration
   reaches the shared project as a local `supabase db push` from that repo,

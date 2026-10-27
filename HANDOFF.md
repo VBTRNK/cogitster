@@ -94,7 +94,7 @@ that bootstrap and was dropped when this repo was split out — see
 1. Deploy/verify production as above.
 2. ~~Move Cogitster into its own VibeTrunk GitHub repository; this folder was
    nested in the root landing-page workspace only for development.~~ Done
-   2026-08-16 — this is now that repository (`VibeTrunk/cogitster`),
+   2026-08-16 — this is now that repository (`VBTRNK/cogitster`),
    git-linked to the existing `cogitster` Vercel project.
 3. Add private sequential multiplayer rooms with Supabase Realtime, server
    timers, reconnect tokens, and no hidden-card leakage.

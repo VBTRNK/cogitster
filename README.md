@@ -29,7 +29,7 @@ contains the first production backend slice:
 
 The one-time bootstrap on 2026-08-16 ran these commands. They are history
 now: hosted migrations go only through
-[`VibeTrunk/supabase`](https://github.com/VibeTrunk/supabase), and every
+[`VBTRNK/supabase`](https://github.com/VBTRNK/supabase), and every
 `db push`, `secrets set` or `functions deploy` against the shared project
 needs the owner's yes for that run (see `AGENTS.md`).
 
