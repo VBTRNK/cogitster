@@ -10,8 +10,9 @@ browser never talks to Postgres directly — all game logic runs through the
 
 If you notice something suspicious (an RLS gap, a way to see a hidden card
 or an opponent's future placement, a CSP bypass, a vulnerable dependency, a
-leaked credential), report it to m.f.vanoostrom@gmail.com rather than
-opening a public issue.
+leaked credential), report it privately through GitHub's
+[private vulnerability reporting](https://github.com/VBTRNK/cogitster/security/advisories/new)
+rather than opening a public issue.
 
 The `service_role` Supabase key must never be `PUBLIC_`-prefixed, never
 ships to the browser, and never appears in any tracked file — only
